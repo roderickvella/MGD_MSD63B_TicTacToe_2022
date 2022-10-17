@@ -58,13 +58,136 @@ public class GameManager : MonoBehaviour
             //update BoardMap
             BoardMap[boardPiece.row, boardPiece.column] = boardPiece;
 
-            //check winner - This is not implemented yet...found another job with a better salary ;)
+			//check winner
+			bool win = CheckWinner(boardPiece);
+
+			if (win)
+			{
+				print("Detected win by " + currentActivePlayer.id);
+				canvasManager.ChangeBottomLabel("Winner:" + currentActivePlayer.nickname);
+				stopGame = true;
+			}
+			else
+			{
+				//check if game is draw
+				if (IsGameDraw())
+				{
+					print("Game is draw");
+					canvasManager.ChangeBottomLabel("Game Draw");
+					stopGame = true;
+				}
+				else
+				{
+					print("Game is not draw. Continue playing...");
+					ChangeActivePlayer();
+				}
+			}
 
 
         }
 
     }
 
+    private bool CheckWinner(BoardPiece boardPiece)
+	{
+		//check the row where the user clicked
+		int rowCounter = 0;
+        for(int i=0; i < 3; i++)
+		{
+			BoardPiece tmpBoardPiece = BoardMap[boardPiece.row, i];
+            if(tmpBoardPiece != null)
+			{
+				if (tmpBoardPiece.GetFruit() == boardPiece.GetFruit())
+					rowCounter = rowCounter + 1;
+			}
+		}
+
+        if(rowCounter == 3)
+		{
+			print("Similar in row");
+			return true;
+		}
+
+		//check the column where the user clicked
+		int colCounter = 0;
+        for(int i=0; i<3; i++)
+		{
+			BoardPiece tmpBoardPiece = BoardMap[i, boardPiece.column];
+            if(tmpBoardPiece != null)
+			{
+				if (tmpBoardPiece.GetFruit() == boardPiece.GetFruit())
+					colCounter += 1;
+			}
+
+		}
+
+        if(colCounter == 3)
+		{
+			print("Similar in column");
+			return true;
+		}
+
+		//check diagonal 1
+		int diagOneCounter = 0;
+		int diagCol1 = -1;
+
+        for(int i=0; i<3; i++)
+		{
+			diagCol1 += 1;
+			BoardPiece tmpBoardPiece = BoardMap[i, diagCol1];
+            if(tmpBoardPiece != null)
+			{
+                if(tmpBoardPiece.GetFruit() == boardPiece.GetFruit())
+				{
+					diagOneCounter += 1;
+				}
+			}
+		}
+
+        if(diagOneCounter == 3)
+		{
+			print("Similar in diagonal 1");
+			return true;
+		}
+
+		//check diagonal 2
+		int diagCol2 = 3;
+		int diagTwoCounter = 0;
+		for (int i = 0; i < 3; i++){
+			diagCol2 = diagCol2 - 1;
+			BoardPiece tmpBoardPiece = BoardMap[i, diagCol2];
+
+            if(tmpBoardPiece != null)
+			{
+                if(tmpBoardPiece.GetFruit() == boardPiece.GetFruit())
+				{
+					diagTwoCounter += 1;
+				}
+			}
+		}
+
+		if (diagTwoCounter == 3) {
+			print("Similar in diagonal 2");
+			return true;
+
+        }
+
+		return false;
+
+	}
+
+
+    private bool IsGameDraw()
+	{
+        foreach(BoardPiece boardPiece in BoardMap)
+		{
+			if (boardPiece == null)
+				return false;
+		}
+
+		return true;
+
+	}
    
 
 
