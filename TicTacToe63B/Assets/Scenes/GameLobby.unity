@@ -2173,6 +2173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1038789461}
+  - component: {fileID: 1038789460}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -2180,6 +2181,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1038789460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038789459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f5f92f4f1004ac3aa5812e163d3c7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ScrollViewContent: {fileID: 850976201}
+  RowRoom: {fileID: 3782993265324374601, guid: 437936aa02dd7ae4f8cbbee7c1e86e0e, type: 3}
+  InputPlayerName: {fileID: 788397241}
+  InputRoomName: {fileID: 424557791}
+  Status: {fileID: 1799767273}
+  BtnCreateRoom: {fileID: 1880104304}
+  PanelLobby: {fileID: 306006826}
+  PanelWaitingForPlayer: {fileID: 189522731}
 --- !u!4 &1038789461
 Transform:
   m_ObjectHideFlags: 0
@@ -2713,7 +2734,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1873331266
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2911,7 +2932,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1038789460}
         m_TargetAssemblyTypeName: Lobby, Assembly-CSharp
         m_MethodName: CreateRoom
         m_Mode: 1
