@@ -8,6 +8,7 @@ using TMPro;
 public class CanvsManager : MonoBehaviour
 {
     public GameManager gameManager;
+    public NetworkManager networkManager;
     
     public Sprite fruitApple;
     public Sprite fruitStrawberry;
@@ -49,8 +50,10 @@ public class CanvsManager : MonoBehaviour
     {           
         PointerEventData bEvent = (PointerEventData)baseEvent;
         print(bEvent.pointerClick.gameObject.name);
-        gameManager.SelectBoardPiece(bEvent.pointerClick.gameObject);
-        
+        //gameManager.SelectBoardPiece(bEvent.pointerClick.gameObject);
+        networkManager.NotifySelectBoardPiece(bEvent.pointerClick.gameObject);
+
+
     }
 
     public void BoardPaint(GameObject gameObjBoardPiece)

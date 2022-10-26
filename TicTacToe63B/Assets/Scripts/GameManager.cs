@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,8 +14,18 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        players.Add(new Player() { id = Player.Id.Player1, nickname = "P1", assignedFruit = Fruit.FruitType.Apple });
-        players.Add(new Player() { id = Player.Id.Player2, nickname = "P2", assignedFruit = Fruit.FruitType.Strawberry });
+        //players.Add(new Player() { id = Player.Id.Player1, nickname = "P1", assignedFruit = Fruit.FruitType.Apple });
+        //players.Add(new Player() { id = Player.Id.Player2, nickname = "P2", assignedFruit = Fruit.FruitType.Strawberry });
+
+        Photon.Realtime.Player[] allPlayers = PhotonNetwork.PlayerList;
+        foreach(Photon.Realtime.Player player in allPlayers)
+        {
+            if (player.ActorNumber == 1)
+                players.Add(new Player() { id = Player.Id.Player1, nickname = player.NickName, assignedFruit = Fruit.FruitType.Apple });
+            else if (player.ActorNumber == 2)
+                players.Add(new Player() { id = Player.Id.Player2, nickname = player.NickName, assignedFruit = Fruit.FruitType.Strawberry });
+        }
+
 
         ChangeTopName();
         ChangeActivePlayer();

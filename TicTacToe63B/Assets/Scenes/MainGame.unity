@@ -1656,6 +1656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 1380361979}
+  networkManager: {fileID: 1380361982}
   fruitApple: {fileID: 21300000, guid: 709e1c484f9abc64eb3b9416684f8821, type: 3}
   fruitStrawberry: {fileID: 21300000, guid: dc325811f9f1cae49a83a254d58f8e3a, type: 3}
   fruitEmpty: {fileID: 21300000, guid: c5101cc78b4450e4ba5f0ad5dd38d5fd, type: 3}
@@ -1669,6 +1670,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1380361980}
   - component: {fileID: 1380361979}
+  - component: {fileID: 1380361981}
+  - component: {fileID: 1380361982}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -1704,6 +1707,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1380361981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380361978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 2
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1380361982}
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1380361982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380361978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc83b8cbcbf8340a6989126b4b61cb00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1469019105
 GameObject:
   m_ObjectHideFlags: 0
